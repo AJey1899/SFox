@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="#6E94F0">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/splashlogo"
+        android:id="@+id/logo"
+        android:layout_marginBottom="100dp"
+        android:scaleX="0.8"
+        android:scaleY="0.8"
+        />
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true">
+        <TextView
+            android:id="@+id/sfox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/relishbold"
+            android:text="SFox "
+            android:textColor="#fff"
+            android:textSize="30sp"
+            android:layout_marginTop="450dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/relish"
+            android:layout_marginTop="450dp"
+            android:text="Web"
+            android:textSize="30sp"
+            android:textColor="#fff"
+            android:layout_toRightOf="@id/sfox"
+            />
+    </RelativeLayout>
+</RelativeLayout>

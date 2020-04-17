@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="@drawable/back"
+    android:id="@+id/relative1">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp">
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/mainlogo"
+            android:id="@+id/logo"
+            android:layout_marginTop="90dp"
+            />
+        <TextView
+            android:id="@+id/sfox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/relishbold"
+            android:text="SFox "
+            android:textColor="#fff"
+            android:textSize="30sp"
+            android:layout_marginTop="150dp"
+            android:layout_toRightOf="@id/logo"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/relish"
+            android:text="Web"
+            android:textSize="30sp"
+            android:textColor="#fff"
+            android:layout_toRightOf="@id/sfox"
+            android:layout_marginTop="150dp"
+            />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="450dp"
+        >
+        <ImageButton
+            android:id="@+id/gitbtn"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:background="@drawable/btn"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true"
+            />
+
+        <ImageButton
+            android:id="@+id/stackbtn"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/stackbtn"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true"
+
+            />
+
+        <ImageButton
+            android:id="@+id/ytbtn"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:background="@drawable/ytbtn"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true"
+
+            />
+
+    </LinearLayout>
+
+</RelativeLayout>
