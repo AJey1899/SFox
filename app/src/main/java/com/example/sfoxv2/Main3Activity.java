@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 public class Main3Activity extends AppCompatActivity {
     WebView sfox;
@@ -34,6 +35,20 @@ public class Main3Activity extends AppCompatActivity {
             case "ytclicked":
                 sfox.loadUrl("https://youtube.com/");
                 break;
+        }
+        sfox.setWebViewClient(new WebViewClient(){
+            public boolean shouldOverrideUrlLoading(WebView viewx, String url) {
+                viewx.loadUrl(url);
+                return false;
+            }
+        });
+
+    }
+    public void onBackPressed() {
+        if (sfox.canGoBack()) {
+            sfox.goBack();
+        } else {
+            super.onBackPressed();
         }
     }
 }

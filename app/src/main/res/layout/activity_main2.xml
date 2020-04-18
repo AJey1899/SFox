@@ -6,7 +6,9 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     android:background="@drawable/back"
-    android:id="@+id/relative1">
+    android:id="@+id/relative1"
+    android:clickable="true"
+    android:focusableInTouchMode="true" >
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -87,4 +89,25 @@
 
     </LinearLayout>
 
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        >
+    <EditText
+
+        android:layout_marginBottom="22dp"
+        android:layout_height="50dp"
+        android:layout_width="match_parent"
+        android:layout_marginRight="50dp"
+        android:layout_marginLeft="15dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:id="@+id/edittext"
+        android:background="@drawable/redittext"
+        android:singleLine="true"
+        android:imeOptions="actionNext"
+        android:elevation="7dp"
+        />
+    </RelativeLayout>
 </RelativeLayout>
