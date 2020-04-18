@@ -5,15 +5,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 public class Main2Activity extends AppCompatActivity {
 
     ImageButton gitbtn, ytbtn, stackbtn;
     EditText edittext;
+    String urlstr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +35,7 @@ public class Main2Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 intent.putExtra("site", "gitclicked");
+                intent.putExtra("flag","1");
                 startActivity(intent);
             }
         });
@@ -38,6 +43,7 @@ public class Main2Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 intent.putExtra("site", "stackclicked");
+                intent.putExtra("flag","1");
                 startActivity(intent);
             }
         });
@@ -45,9 +51,27 @@ public class Main2Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 intent.putExtra("site", "ytclicked");
+                intent.putExtra("flag","1");
                 startActivity(intent);
             }
         });
+
+
+
+
+        edittext.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
+
+                    urlstr = edittext.getText().toString();
+                    intent.putExtra("url",urlstr);
+                    intent.putExtra("flag","0");
+                    startActivity(intent);
+                }
+                return false;
+            }
+        });
+
 
         edittext.setOnFocusChangeListener(new View.OnFocusChangeListener()
         {
