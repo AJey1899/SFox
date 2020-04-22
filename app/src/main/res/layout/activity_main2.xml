@@ -47,8 +47,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="450dp"
-        >
+        android:layout_centerVertical="true"
+        android:paddingTop="230sp">
         <ImageButton
             android:id="@+id/gitbtn"
             android:layout_width="75dp"
@@ -94,6 +94,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         >
+        <include layout="@layout/toolbar"
+            android:id="@+id/toolbar"
+            />
     <EditText
 
         android:layout_marginBottom="22dp"
