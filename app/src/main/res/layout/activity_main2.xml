@@ -112,6 +112,7 @@
         android:imeOptions="actionDone"
         android:elevation="7dp"
         android:hint="Enter URL"
+        android:selectAllOnFocus="true"
 
         />
     </RelativeLayout>

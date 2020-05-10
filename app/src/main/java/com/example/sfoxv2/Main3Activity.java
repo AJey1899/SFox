@@ -1,9 +1,9 @@
 package com.example.sfoxv2;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
@@ -14,7 +14,6 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.EditText;
 import android.widget.TextView;
-
 import java.net.URL;
 
 public class Main3Activity extends AppCompatActivity {
@@ -27,8 +26,8 @@ public class Main3Activity extends AppCompatActivity {
         setContentView(R.layout.activity_main3);
         getSupportActionBar().hide();
         Intent i = getIntent();
-        sfox = (WebView)findViewById(R.id.web);
-        edittext = (EditText)findViewById(R.id.edittext);
+        sfox = (WebView) findViewById(R.id.web);
+        edittext = (EditText) findViewById(R.id.edittext);
 
         //final Intent intent = new Intent(Main3Activity.this, Main2Activity.class);
 
@@ -36,79 +35,85 @@ public class Main3Activity extends AppCompatActivity {
         webSettings.setJavaScriptEnabled(true);
         webSettings.setUseWideViewPort(true);
         String site = i.getStringExtra("site");
-        String url =  i.getStringExtra("url");
+        String url = i.getStringExtra("url");
+
+
         int flag = Integer.parseInt(i.getStringExtra("flag"));
-            if(flag==1) {
-                switch (site) {
-                    case "gitclicked":
-                        sfox.loadUrl("https://github.com/");
-                        break;
-                    case "stackclicked":
-                        sfox.loadUrl("https://stackoverflow.com/");
-                        break;
-                    case "ytclicked":
-                        sfox.loadUrl("https://youtube.com/");
-                        break;
-
-                }
-            }
-            else if(flag==0) {
-                if(!url.startsWith("www.")&& !url.startsWith("http://") && !url.startsWith("https://"))
-                {
-                    url = "www."+url;
-                }
-                if(!url.startsWith("http://") && !url.startsWith("https://"))
-                {
-                    if(isValid("https://"+url))
-                    {
-                        url = "https://"+url;
-                    }
-                    else if(isValid("http://"+url))
-                    {
-                        url = "http://"+url;
-                    }
-                }
-                sfox.loadUrl(url);
+        if (flag == 1) {
+            switch (site) {
+                case "gitclicked":
+                    sfox.loadUrl("https://github.com/");
+                    //edittext.setText("https://github.com/");
+                    break;
+                case "stackclicked":
+                    sfox.loadUrl("https://stackoverflow.com/");
+                    //edittext.setText("https://stackoverflow.com/");
+                    break;
+                case "ytclicked":
+                    sfox.loadUrl("https://youtube.com/");
+                    //edittext.setText("https://youtube.com/");
+                    break;
 
             }
+        } else if (flag == 0) {
+            if (!url.startsWith("www.") && !url.startsWith("http://") && !url.startsWith("https://")) {
+                url = "www." + url;
+            }
+            if (!url.startsWith("http://") && !url.startsWith("https://")) {
+                if (isValid("https://" + url)) {
+                    url = "https://" + url;
+                } else if (isValid("http://" + url)) {
+                    url = "http://" + url;
+                }
+            }
+            sfox.loadUrl(url);
+            //edittext.setText(url);
+
+        }
 
         edittext.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE))
-                {
+                if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
                     String urlstr = edittext.getText().toString();
-                    if(!urlstr.startsWith("www.")&& !urlstr.startsWith("http://") && !urlstr.startsWith("https://"))
-                    {
-                        urlstr = "www."+urlstr;
+                    if (!urlstr.startsWith("www.") && !urlstr.startsWith("http://") && !urlstr.startsWith("https://")) {
+                        urlstr = "www." + urlstr;
                     }
-                    if(!urlstr.startsWith("http://") && !urlstr.startsWith("https://"))
-                    {
-                        if(isValid("https://"+urlstr))
-                        {
-                            urlstr = "https://"+urlstr;
-                        }
-                        else if(isValid("http://"+urlstr))
-                        {
-                            urlstr = "http://"+urlstr;
+                    if (!urlstr.startsWith("http://") && !urlstr.startsWith("https://")) {
+                        if (isValid("https://" + urlstr)) {
+                            urlstr = "https://" + urlstr;
+                        } else if (isValid("http://" + urlstr)) {
+                            urlstr = "http://" + urlstr;
                         }
                     }
                     sfox.loadUrl(urlstr);
+                    //edittext.setText(urlstr);
                 }
                 return false;
             }
         });
-        sfox.setWebViewClient(new WebViewClient(){
+        sfox.setWebViewClient(new WebViewClient() {
+
+            public void onPageStarted(WebView view, String url, Bitmap favicon) {
+                super.onPageStarted(view, url, favicon);
+                edittext.setText(url);
+            }
+
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 view.loadUrl(url);
+                edittext.setText(url);
                 return false;
             }
 
+            public void onPageFinished(WebView view, String url) {
+                super.onPageFinished(view, url);
+                edittext.setText(url);
+            }
         });
 
-        edittext.setOnFocusChangeListener(new View.OnFocusChangeListener()
-        {
+
+        edittext.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
-            public void onFocusChange (View v,boolean hasFocus){
+            public void onFocusChange(View v, boolean hasFocus) {
                 if (!hasFocus) {
                     hideKeyboard(v);
                 }
@@ -116,6 +121,7 @@ public class Main3Activity extends AppCompatActivity {
         });
 
     }
+
     public void hideKeyboard(View view) {
         InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
         inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
@@ -128,18 +134,14 @@ public class Main3Activity extends AppCompatActivity {
             super.onBackPressed();
         }
     }
-    public boolean isValid(String url)
-    {
-        try
-        {
+
+    public boolean isValid(String url) {
+        try {
             new URL(url).toURI();
             return true;
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             return false;
         }
     }
-
 
 }
