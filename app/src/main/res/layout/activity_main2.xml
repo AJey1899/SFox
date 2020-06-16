@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".Main2Activity"
     android:background="@drawable/back"
     android:id="@+id/relative1"
     android:clickable="true"
@@ -102,7 +101,7 @@
         android:layout_marginBottom="22dp"
         android:layout_height="50dp"
         android:layout_width="match_parent"
-        android:layout_marginRight="50dp"
+        android:layout_marginRight="70dp"
         android:layout_marginLeft="15dp"
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
@@ -111,7 +110,7 @@
         android:singleLine="true"
         android:imeOptions="actionDone"
         android:elevation="7dp"
-        android:hint="Enter URL"
+        android:hint="Search or enter URL"
         android:selectAllOnFocus="true"
 
         />
